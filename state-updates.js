@@ -15,8 +15,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var withLatestFrom_1 = require('rxjs/operator/withLatestFrom');
 var filter_1 = require('rxjs/operator/filter');
-var store_1 = require('@ngrx/store');
 var ReplaySubject_1 = require('rxjs/ReplaySubject');
+var store_1 = require('@ngrx/store');
 var core_1 = require('@angular/core');
 var StateUpdates = (function (_super) {
     __extends(StateUpdates, _super);
@@ -33,18 +33,21 @@ var StateUpdates = (function (_super) {
     StateUpdates.prototype.next = function (update) { };
     StateUpdates.prototype.error = function (err) { };
     StateUpdates.prototype.complete = function () { };
-    StateUpdates.prototype.whenAction = function (actionType) {
+    StateUpdates.prototype.whenAction = function () {
+        var actionTypes = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            actionTypes[_i - 0] = arguments[_i];
+        }
         return filter_1.filter.call(this, function (_a) {
             var action = _a.action;
-            return action.type === actionType;
+            return actionTypes.indexOf(action.type) > -1;
         });
     };
     StateUpdates = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof store_1.Dispatcher !== 'undefined' && store_1.Dispatcher) === 'function' && _a) || Object, (typeof (_b = typeof store_1.State !== 'undefined' && store_1.State) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [store_1.Dispatcher, store_1.State])
     ], StateUpdates);
     return StateUpdates;
-    var _a, _b;
 }(ReplaySubject_1.ReplaySubject));
 exports.StateUpdates = StateUpdates;
 exports.STATE_UPDATES_PROVIDER = new core_1.Provider(StateUpdates, {

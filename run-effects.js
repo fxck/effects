@@ -8,7 +8,8 @@ function runEffects() {
     for (var _i = 0; _i < arguments.length; _i++) {
         effects[_i - 0] = arguments[_i];
     }
-    var allEffects = util_1.flatten(effects).map(function (effect) { return new core_1.Provider(effects_1.BOOTSTRAP_EFFECTS, {
+    var allEffects = util_1.flatten(effects)
+        .map(function (effect) { return new core_1.Provider(effects_1.BOOTSTRAP_EFFECTS, {
         useClass: effect,
         multi: true
     }); });

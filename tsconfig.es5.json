@@ -2,7 +2,7 @@
   "version": "1.8.0",
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./",
+    "outDir": "./release/npm",
     "target": "es5",
     "module": "commonjs",
     "sourceMap": true,
